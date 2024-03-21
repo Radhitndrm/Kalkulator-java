@@ -12,9 +12,9 @@ import javax.swing.JOptionPane;
  */
 public class KalkulatorForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form KalkulatorForm
-     */
+    private String status = "";
+    
+   Crud obj = new Crud();
     public KalkulatorForm() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -142,7 +142,12 @@ public class KalkulatorForm extends javax.swing.JFrame {
         hasil = App.hitung(bilangan1, bilangan2, operator, penanda);
         
         JOptionPane.showMessageDialog(null,"Hasil " + penanda + " Antara " + txt_b1.getText() + " dan " + txt_b2.getText() + " adalah " + Double.toString(hasil));
-       
+        obj.setBilangan1(txt_b1.getText());
+        obj.setBilangan2(txt_b2.getText());
+        obj.setOperator(operator);
+        obj.setHasil(hasil);
+        
+        status = obj.simpanData(obj.getBilangan1(), obj.getBilangan2(), obj.getOperator(), obj.getHasil());
 
         txt_b1.setText("");
         txt_b2.setText("");
